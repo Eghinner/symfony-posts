@@ -1,0 +1,10 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+app_logout:
+    path: /logout
+    methods: GET
+
+# postUnico:
+#     path:       /post/{id}
+#     controller: App\Controller\PostsController::verPost

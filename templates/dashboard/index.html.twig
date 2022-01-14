@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Dashboard{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    {# {{ dump(pagination) }} #}
+    <div class="container">
+        <div class="row">
+
+        {% for article in pagination %}
+            <div class="col-md-8">
+                <div class="bg-white rounded p-3 my-3">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 flex-grow-1 bd-highlight">
+                            <h3>{{ article.titulo }}</h3>
+                            <div class="my-3 bg-yellow"> <i class="fa fa-user"></i><strong> Creado por {{ article.nombre }}</strong></div>
+                            <div class=" bg-green"><i class="far fa-clock"></i> <strong>Fecha de publicación: {{ article.fecha_publicacion | date }}</strong></div>
+                            <div class="my-3 cursor"><a href="{{ path('showPost', {id:article.id}) }}"><i class="fa fa-book"></i> <strong>Read</strong></a></div>
+                        </div>
+                        <div class="p-2 bd-highlight">
+                            <div class="align-self-center">
+                                <img class="rounded" src="{{ asset('uploads/photos/'~article.foto) }}" width="150px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+            <div class="col-md-4">
+                <div class="bg-white rounded p-3 my-3">
+                    <h4>Comentarios</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}

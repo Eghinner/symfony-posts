@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} My Posts{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+
+	<ul>
+		{% for post in posts %}
+			<li>{{ post.titulo }}</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}

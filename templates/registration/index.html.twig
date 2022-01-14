@@ -1,0 +1,31 @@
+{# /app/templates/registration/register.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container h-100">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-6 bg-white rounded my-3 p-5">
+                <h1>Register</h1>
+                {% set formErrors = registrationForm.vars.errors.form.getErrors(true) %}
+                {% if formErrors|length %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in formErrors %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {{ form_start(registrationForm) }}
+                    {{ form_row(registrationForm.nombre) }}
+                    {{ form_row(registrationForm.email) }}
+                    {{ form_row(registrationForm.plainPassword) }}
+                    <button class="btn btn-primary">Register</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
