@@ -4,7 +4,7 @@
 
 {% block body %}
 {{ parent() }}
-{{ dump(coment_post) }}
+{# {{ dump(coment_post) }} #}
 
 	<div class="container bg-white rounded my-3 p-4">
         <div class="d-flex bd-highlight">
@@ -37,7 +37,8 @@
         {% if coment_post %}
             {% for coment in coment_post %}
                 <div class="container bg-white rounded my-3 p-2">
-                    <h3>{{coment.comentario}}</h3>
+                    <h5>{{coment.comentario}}</h5>
+                    <small class="text-secondary">By: {{ coment.nombre }}</small>
                 </div>
             {% endfor %}
         {% else %}

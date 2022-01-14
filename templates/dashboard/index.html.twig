@@ -4,35 +4,77 @@
 
 {% block body %}
     {{ parent() }}
-    {# {{ dump(pagination) }} #}
+    {# {{ dump(coments) }} #}
     <div class="container">
         <div class="row">
 
-        {% for article in pagination %}
+
             <div class="col-md-8">
+            {% for article in pagination %}
                 <div class="bg-white rounded p-3 my-3">
                     <div class="d-flex bd-highlight">
                         <div class="p-2 flex-grow-1 bd-highlight">
                             <h3>{{ article.titulo }}</h3>
-                            <div class="my-3 bg-yellow"> <i class="fa fa-user"></i><strong> Creado por {{ article.nombre }}</strong></div>
-                            <div class=" bg-green"><i class="far fa-clock"></i> <strong>Fecha de publicación: {{ article.fecha_publicacion | date }}</strong></div>
-                            <div class="my-3 cursor"><a href="{{ path('showPost', {id:article.id}) }}"><i class="fa fa-book"></i> <strong>Read</strong></a></div>
+                            <div class="my-3 bg-yellow">
+                                <i class="fa fa-user"></i>
+                                <strong> Creado por {{ article.nombre }}</strong>
+                            </div>
+                            <div class=" bg-green">
+                                <i class="far fa-clock"></i>
+                                <strong>
+                                    Fecha de publicación:
+                                    {{ article.fecha_publicacion | date }}
+                                </strong>
+                            </div>
+                            <div class="my-3 cursor d-inline-block">
+                                <a href="{{ path('showPost', {id:article.id}) }}">
+                                    <i class="fa fa-book"></i>
+                                    <strong>Read</strong>
+                                </a>
+                            </div>
+                            <div class="d-inline-block m-3" style="color:#3282b8;">
+                                <i class="fa fa-thumbs-up"></i><strong>0</strong>
+                            </div>
                         </div>
                         <div class="p-2 bd-highlight">
                             <div class="align-self-center">
-                                <img class="rounded" src="{{ asset('uploads/photos/'~article.foto) }}" width="150px">
+                                <img
+                                    class="rounded"
+                                    src="{{ asset('uploads/photos/'~article.foto) }}"
+                                    width="150px"
+                                >
                             </div>
                         </div>
                     </div>
                 </div>
+            {% endfor %}
             </div>
-        {% endfor %}
 
-            <div class="col-md-4">
+
+            <div class="col-md-3">
                 <div class="bg-white rounded p-3 my-3">
                     <h4>Comentarios</h4>
+                    {% if coments %}
+                        {% for coment in coments %}
+                            <hr>
+                            <h4 title="{{ coment.comentario }}">
+                                {% if coment.comentario | length > 20 %}
+                                    {{ coment.comentario | slice(0,20) ~'...' }}
+                                {% else %}
+                                    {{ coment.comentario }}
+                                {% endif %}
+                            </h4>
+                            <small
+                                class="text-secondary">Published at
+                                    {{ coment.fechapublicacion | date }}
+                            </small>
+                        {% endfor %}
+                    {% else %}
+                        <p>No hay comentarios en nigun post</p>
+                    {% endif %}
                 </div>
             </div>
+
         </div>
     </div>
     <div class="d-flex justify-content-center">

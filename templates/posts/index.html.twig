@@ -4,7 +4,24 @@
 
 {% block body %}
 	{{ parent() }}
+	<div class="container h-100">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-6 bg-white rounded my-3 p-5">
+                <h1>Create Post</h1>
+                {% set formErrors = form.vars.errors.form.getErrors(true) %}
+                {% if formErrors|length %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in formErrors %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
 
-	{{ form(form) }}
+                {{ form(form) }}
+			</div>
+        </div>
+    </div>
 
 {% endblock %}

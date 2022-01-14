@@ -4,6 +4,7 @@
 
 {% block body %}
 	{{ parent() }}
+	{{ dump(posts) }}
 
 	<ul>
 		{% for post in posts %}

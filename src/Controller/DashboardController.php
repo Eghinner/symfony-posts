@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Posts;
+use App\Entity\Comentarios;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,16 +19,14 @@ class DashboardController extends AbstractController
     {
     	$entityManager = $this->getDoctrine()->getManager();
     	$query = $entityManager->getRepository(Posts::class)->findAllPosts();
-    	$posts2 = $entityManager->getRepository(Posts::class)->findAll();
+    	$coment = $entityManager->getRepository(Comentarios::class)->findAll();
 
     	$pagination = $paginator->paginate(
-        	$query, /* query NOT result */
-        	$request->query->getInt('page', 1), /*page number*/
-        	2 /*limit per page*/
-    	);
+        	$query,
+        	$request->query->getInt('page', 1), 10);
 
         return $this->render('dashboard/index.html.twig', [
-            // 'posts' => $posts,
+            'coments' => $coment,
             'pagination' => $pagination
         ]);
     }
