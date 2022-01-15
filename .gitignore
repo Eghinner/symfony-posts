@@ -1,8 +1,8 @@
-.env
-.env.backup
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /public/uploads
 /uploads/*.key
 /var/
 /vendor/
+/bin
+.env
