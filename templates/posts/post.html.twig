@@ -18,11 +18,13 @@
                     <strong>Fecha de publicación: {{post.fechapublicacion | date}}</strong>
                 </div>
             </div>
+            {% if post.foto %}
             <div class="p-2 bd-highlight">
                 <div class="align-self-center">
                     <img class="rounded" src="{{ asset('uploads/photos/'~post.foto) }}" width="150px">
                 </div>
             </div>
+            {% endif %}
         </div>
         <hr>
         <div class="text-justify my-3">
@@ -31,8 +33,9 @@
     </div>
 
         <div class="container">
+        {% if app.user %}
             {{ form(form) }}
-
+        {% endif %}
         <h1>Coments</h1>
         {% if coment_post %}
             {% for coment in coment_post %}

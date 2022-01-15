@@ -25,6 +25,7 @@ security:
                 login_path: login
                 check_path: login
                 enable_csrf: true
+                default_target_path: dashboard
             logout:
                 path: app_logout
                 target: dashboard
@@ -39,7 +40,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/register-post, roles: [ROLE_ADMIN, ROLE_USER] }
+        - { path: ^/myPost, roles: [ROLE_ADMIN, ROLE_USER] }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

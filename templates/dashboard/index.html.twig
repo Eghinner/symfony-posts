@@ -17,16 +17,16 @@
                             <h3>{{ article.titulo }}</h3>
                             <div class="my-3 bg-yellow">
                                 <i class="fa fa-user"></i>
-                                <strong> Creado por {{ article.nombre }}</strong>
+                                <strong> By {{ article.nombre }}</strong>
                             </div>
                             <div class=" bg-green">
                                 <i class="far fa-clock"></i>
                                 <strong>
-                                    Fecha de publicación:
+                                    Published at:
                                     {{ article.fecha_publicacion | date }}
                                 </strong>
                             </div>
-                            <div class="my-3 cursor d-inline-block">
+                            <div class="m-3 d-inline-block">
                                 <a href="{{ path('showPost', {id:article.id}) }}">
                                     <i class="fa fa-book"></i>
                                     <strong>Read</strong>
@@ -36,6 +36,7 @@
                                 <i class="fa fa-thumbs-up"></i><strong>0</strong>
                             </div>
                         </div>
+                        {% if article.foto %}
                         <div class="p-2 bd-highlight">
                             <div class="align-self-center">
                                 <img
@@ -45,6 +46,7 @@
                                 >
                             </div>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
@@ -53,7 +55,7 @@
 
             <div class="col-md-3">
                 <div class="bg-white rounded p-3 my-3">
-                    <h4>Comentarios</h4>
+                    <h4>Comments</h4>
                     {% if coments %}
                         {% for coment in coments %}
                             <hr>
@@ -70,7 +72,7 @@
                             </small>
                         {% endfor %}
                     {% else %}
-                        <p>No hay comentarios en nigun post</p>
+                        <p>No comments on any post</p>
                     {% endif %}
                 </div>
             </div>
