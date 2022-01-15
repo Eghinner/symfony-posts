@@ -1,14 +1,8 @@
-
-###> symfony/framework-bundle ###
 .env
 .env.backup
-/.env
-/.env.local
-/.env.local.php
-/.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /public/uploads
+/uploads/*.key
 /var/
 /vendor/
-###< symfony/framework-bundle ###
