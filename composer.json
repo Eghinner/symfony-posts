@@ -4,7 +4,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.2.5",
+        "php": ">=7.4.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/doctrine-bundle": "^2.5",
@@ -24,7 +24,9 @@
         "symfony/twig-bundle": "5.4.*",
         "symfony/validator": "5.4.*",
         "symfony/yaml": "5.4.*",
-        "symfonycasts/verify-email-bundle": "^1.7"
+        "symfonycasts/verify-email-bundle": "^1.7",
+        "twig/extra-bundle": "^3.3",
+        "twig/intl-extra": "^3.3"
     },
     "config": {
         "allow-plugins": {

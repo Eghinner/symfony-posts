@@ -68,7 +68,7 @@
                             </h4>
                             <small
                                 class="text-secondary">Published at
-                                    {{ coment.fechapublicacion | date }}
+                                    {{ coment.fechapublicacion | format_datetime('short','none') }}
                             </small>
                         {% endfor %}
                     {% else %}
