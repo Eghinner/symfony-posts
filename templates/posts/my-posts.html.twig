@@ -4,12 +4,54 @@
 
 {% block body %}
 	{{ parent() }}
-	{{ dump(posts) }}
+	{# {{ dump(posts) }} #}
 
-	<ul>
-		{% for post in posts %}
-			<li>{{ post.titulo }}</li>
-		{% endfor %}
-	</ul>
+	<div class="container">
+		<h1 class="my-4">My posts</h1>
+        <div class="col-md-8">
+        	{% for article in posts %}
+        	    <div class="bg-white rounded p-3 my-3">
+        	        <div class="d-flex bd-highlight">
+        	            <div class="p-2 flex-grow-1 bd-highlight">
+        	                <h3>{{ article.titulo }}</h3>
+        	                <div class=" bg-green">
+        	                    <i class="far fa-clock"></i>
+        	                    <strong>
+        	                        Published at:
+        	                        {{ article.fechapublicacion | date }}
+        	                    </strong>
+        	                </div>
+        	                <div class="m-3 d-inline-block">
+        	                    <a href="{{ path('showPost', {id:article.id}) }}">
+        	                        <i class="fa fa-book"></i>
+        	                        <strong>Read</strong>
+        	                    </a>
+        	                </div>
+        	                 <div class="m-3 d-inline-block">
+        	                    <a href="{{ path('showPost', {id:article.id}) }}">
+        	                        <i class="fa fa-edit"></i>
+        	                        <strong>Edit</strong>
+        	                    </a>
+        	                </div>
+        	            </div>
+        	            {% if article.foto %}
+        	            <div class="p-2 bd-highlight">
+        	                <div class="align-self-center">
+        	                    <img
+        	                        class="rounded"
+        	                        src="{{ asset('uploads/photos/'~article.foto) }}"
+        	                        width="150px"
+        	                    >
+        	                </div>
+        	            </div>
+        	            {% endif %}
+        	        </div>
+        	        <div class="text-justify my-3">
+        	             {{ article.contenido }}
+        	        </div>
+        	    </div>
+        	{% endfor %}
+		</div>
+	</div>
 
 {% endblock %}

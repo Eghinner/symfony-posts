@@ -41,7 +41,9 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/register-post, roles: [ROLE_ADMIN, ROLE_USER] }
-        - { path: ^/myPost, roles: [ROLE_ADMIN, ROLE_USER] }
+        - { path: ^/my-posts, roles: [ROLE_ADMIN, ROLE_USER] }
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/register, roles: PUBLIC_ACCESS }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
